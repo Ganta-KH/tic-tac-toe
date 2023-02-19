@@ -1,0 +1,58 @@
+:root {
+    --cell-border: 1px solid #fff:
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #000;
+    display: grid;
+    place-content: center;
+    
+}
+
+.board {
+    border: var(--cell-border);
+    display: grid;
+    height: min(70vh, 70vw);
+    width: min(70vh, 70vw);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+
+.cell {
+    border: 2px solid white;
+} 
+
+.cell:hover {
+    cursor: pointer;
+    background-color: #0f172a;
+}
+
+.board > .cell:first-child,
+.board > .cell:nth-child(2),
+.board > .cell:nth-child(3) {
+    border-top: none;
+}
+
+.board > .cell:first-child,
+.board > .cell:nth-child(4),
+.board > .cell:nth-child(7) {
+    border-left: none;
+}
+
+.board > .cell:nth-child(7),
+.board > .cell:nth-child(8),
+.board > .cell:last-child {
+    border-bottom: none;
+}
+
+.board > .cell:nth-child(3),
+.board > .cell:nth-child(6),
+.board > .cell:last-child {
+    border-right: none;
+}
