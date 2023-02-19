@@ -5,16 +5,22 @@
 }
 
 * {
-    font-family: 'Mynerve';
+    font-family: 'Mynerve', sans-serif;
+    background-color: #000;
+    color: white;
 }
 
 html, body {
     height: 100%;
 }
 
+p,
 body {
     margin: 0;
-    background-color: #000;
+}
+
+body {
+   
     display: grid;
     place-content: center;
     gap: 1.5rem;
@@ -25,12 +31,14 @@ body {
     display: grid;
     height: min(60vh, 60vw);
     width: min(60vh, 60vw);
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
 .cell {
     border: 2px solid white;
+    display: grid;
+    place-content: center;
+    font-size: 15vmin;
 } 
 
 .cell:hover,
@@ -63,12 +71,26 @@ body {
     border-right: none;
 }
 
-#restart {
-    color: white;
-    background-color: #000;
+.turn {
+    text-align: center;
+    font-size: 3.7vmin;
+    margin-top: 1.5rem;
+}
+
+#restart,
+#difficulty {
     border: 2px solid white;
-    font-size: 26px;
-    font-weight: 900;
-    padding: 8px 0;
     border-radius: 6px;
+}
+
+#restart {
+    font-size: 3vmin;
+    font-weight: 900;
+    padding: 8px 20px;
+}
+
+#difficulty {
+    font-size: 2.5vmin;
+    cursor: pointer;
+    padding: 3px 10px;
 }
