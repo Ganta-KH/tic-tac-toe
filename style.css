@@ -16,7 +16,6 @@ body {
 }
 
 body {
-   
     display: grid;
     place-content: center;
     gap: 1.5rem;
@@ -25,8 +24,8 @@ body {
 .board {
     border: var(--cell-border);
     display: grid;
-    height: min(60vh, 60vw);
-    width: min(60vh, 60vw);
+    height: 60vmin;
+    width: 60vmin;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
