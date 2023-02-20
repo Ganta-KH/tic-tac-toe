@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Mynerve);
 
+:root {
+    --board-size: 80vmin;
+}
+
 * {
     font-family: 'Mynerve', sans-serif;
     background-color: #000;
@@ -24,8 +28,8 @@ body {
 .board {
     border: var(--cell-border);
     display: grid;
-    height: 60vmin;
-    width: 60vmin;
+    height: var(--board-size);
+    width: var(--board-size);
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
@@ -33,7 +37,7 @@ body {
     border: 2px solid white;
     display: grid;
     place-content: center;
-    font-size: 15vmin;
+    font-size: calc(var(--board-size) / 4);
 } 
 
 .cell:hover,
@@ -68,7 +72,7 @@ body {
 
 .turn {
     text-align: center;
-    font-size: 3.7vmin;
+    font-size: calc(var(--board-size) / 18);
     margin-top: 1.5rem;
 }
 
