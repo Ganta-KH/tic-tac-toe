@@ -1,4 +1,5 @@
 let playerTurnMark = "X";
+const turn = document.querySelector(".turn");
 
 const board = [
     ["", "", ""],
@@ -23,7 +24,6 @@ const Game = (function () {
         if (cell.textContent !== "") return;
         [x, y] = _getPosition(index);
         board[x][y] = playerTurnMark;
-        console.table(board)
 
         cell.textContent = playerTurnMark;
         playerTurnMark = playerTurnMark === "O" ? "X" : "O";
@@ -31,15 +31,15 @@ const Game = (function () {
     }
 
     function _fullBoard(board) {
-        for(let i = 0; i < board.length; i++) {
-            for(let j = 0; j < board[i].length; j++) {
+        for (let i = 0; i < board.length; i++) {
+            for (let j = 0; j < board[i].length; j++) {
                 if (board[i][j] === "") return false;
             }
         }
         return true;
-    } 
+    }
 
-    function restart(board) {
+    function restart() {
         const cells = document.querySelectorAll(".cell");
         cells.forEach((cell) => {
             cell.textContent = "";
@@ -48,6 +48,9 @@ const Game = (function () {
         board.forEach((col, index) => {
             col[index] = "";
         }, board);
+
+        playerTurnMark = "X";
+        turn.textContent = `Player "${playerTurnMark}" Turn`;
     }
 
     function winner(board) {
@@ -89,13 +92,12 @@ const Game = (function () {
             win = board[0][2];
 
         if (win !== "") return `The Winner is ${win}`;
-        else if ( _fullBoard(board) ) return "It's a Draw";
+        else if (_fullBoard(board)) return "It's a Draw";
         return win;
     }
 
     function setBoard() {
         const cells = document.querySelectorAll(".cell");
-        const turn = document.querySelector(".turn");
         cells.forEach((cell, index) => {
             cell.addEventListener("click", () => {
                 _play(cell, index, turn);
@@ -106,11 +108,12 @@ const Game = (function () {
     return { restart, winner, setBoard };
 })();
 
-
 function ticTacToe() {
+    const restart = document.querySelector("#restart");
+    restart.addEventListener("click", Game.restart);
     if (Game.winner(board) === "") {
-        Game.setBoard()
+        Game.setBoard();
     }
 }
 
-ticTacToe()
+ticTacToe();
