@@ -45,9 +45,9 @@ const Game = (function () {
             cell.textContent = "";
         });
 
-        board.forEach((col, index) => {
-            col[index] = "";
-        }, board);
+        for (let i = 0; i < board.length; i++) {
+            for (let j = 0; j < board[i].length; j++) board[i][j] = "";
+        }
 
         playerTurnMark = "X";
         turn.textContent = `Player "${playerTurnMark}" Turn`;
@@ -60,37 +60,38 @@ const Game = (function () {
             ((board[0][0] === board[0][1] && board[0][1] === board[0][2]) ||
                 (board[0][0] === board[1][1] && board[1][1] === board[2][2]) ||
                 (board[0][0] === board[1][0] && board[1][0] === board[2][0]))
-        )
+        ) {
             win = board[0][0];
-
+        }
         if (
             board[1][0] !== "" &&
-            board[1][0] === board[1][1] &&
-            board[1][1] === board[1][2]
-        )
+            (board[1][0] === board[1][1] &&
+            board[1][1] === board[1][2])
+        ) {
             win = board[1][0];
-
+        }
         if (
             board[2][0] !== "" &&
-            board[2][0] === board[2][1] &&
-            board[2][1] === board[2][2]
-        )
+            (board[2][0] === board[2][1] &&
+            board[2][1] === board[2][2])
+        ) {
             win = board[2][0];
-
+        }
         if (
             board[0][1] !== "" &&
-            board[0][1] === board[1][1] &&
-            board[1][1] === board[2][1]
-        )
+            (board[0][1] === board[1][1] &&
+            board[1][1] === board[2][1])
+        ) {   
             win = board[0][1];
-
+        }
         if (
             board[0][2] !== "" &&
             ((board[0][2] === board[1][2] && board[1][2] === board[2][2]) ||
                 (board[0][2] === board[1][1] && board[1][1] === board[2][0]))
-        )
+        ) {
             win = board[0][2];
-
+            console.log(5);
+        }
         if (win !== "") return `The Winner is ${win}`;
         else if (_fullBoard(board)) return "It's a Draw";
         return win;
@@ -101,6 +102,8 @@ const Game = (function () {
         cells.forEach((cell, index) => {
             cell.addEventListener("click", () => {
                 _play(cell, index, turn);
+
+                if (winner(board) !== "") turn.textContent = winner(board);
             });
         });
     }
