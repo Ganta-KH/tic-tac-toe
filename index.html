@@ -11,6 +11,20 @@
     <body>
         <header>Tic Tac Toe</header>
         <main class="game">
+            <div class="options">
+                <select name="game-type" id="game-type">
+                    <option value="pvp" selected>Player vs Player</option>
+                    <option value="pvc">Player vs Computer</option>
+                </select>
+
+                <select name="difficulty" id="difficulty" class="hide-game-type">
+                    <option value="easy" selected>Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="impossible">Impossible</option>
+                </select>
+                
+            </div>
             <p class="turn">Player "X" Turn</p>
             <div class="board">
                 <div class="cell"></div>

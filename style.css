@@ -36,7 +36,7 @@ header {
     flex: 1;
     display: grid;
     place-content: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .board {
@@ -84,13 +84,22 @@ header {
     border-right: none;
 }
 
+.options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hide-game-type {
+    display: none;
+} 
+
 .turn {
     text-align: center;
     font-size: calc(var(--board-size) / 16);
 }
 
 #restart,
-#difficulty {
+select {
     border: 2px solid white;
     border-radius: 6px;
 }
@@ -101,7 +110,7 @@ header {
     padding: 8px 20px;
 }
 
-#difficulty {
+select {
     font-size: 2.5vmin;
     cursor: pointer;
     padding: 3px 10px;

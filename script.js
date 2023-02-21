@@ -133,15 +133,30 @@ const Game = (function () {
         result.addEventListener('click', _removeGameResult);
     }
 
-    return { restart, winner, setBoard, showGameResult };
+    function gameTypeOption() {
+        const gameType = document.querySelector("#game-type");
+
+        gameType.addEventListener("change", () => {
+            const difficulty = document.querySelector("#difficulty");
+            difficulty.classList.toggle("hide-game-type");
+        });
+    }
+
+    return { restart, winner, setBoard, showGameResult, gameTypeOption };
 })();
 
 function ticTacToe() {
     const restart = document.querySelector("#restart");
     restart.addEventListener("click", Game.restart);
+
+    Game.gameTypeOption();
     if (Game.winner(board) === "") {
         Game.setBoard();
     }
 }
 
 ticTacToe();
+
+
+
+
