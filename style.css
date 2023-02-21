@@ -20,11 +20,22 @@ body {
     margin: 0;
 }
 
-body,
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    font-size: 8vmin;
+    font-weight: bold;
+}
+
 .game {
+    flex: 1;
     display: grid;
     place-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .board {
@@ -74,8 +85,7 @@ body,
 
 .turn {
     text-align: center;
-    font-size: calc(var(--board-size) / 18);
-    margin-top: 1.5rem;
+    font-size: calc(var(--board-size) / 16);
 }
 
 #restart,
@@ -111,4 +121,10 @@ body,
     color: white;
     font-size: 7vw;
     font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 2vmin;
 }
