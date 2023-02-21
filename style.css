@@ -5,13 +5,14 @@
 }
 
 * {
-    font-family: 'Mynerve', sans-serif;
+    font-family: "Mynerve", sans-serif;
     background-color: #000;
     color: white;
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -51,7 +52,7 @@ header {
     display: grid;
     place-content: center;
     font-size: calc(var(--board-size) / 4);
-} 
+}
 
 .cell:hover,
 #restart:hover {
@@ -107,7 +108,7 @@ header {
 }
 
 .blur {
-    filter: blur(10px);
+    filter: blur(15px);
 }
 
 .result {
