@@ -39,6 +39,17 @@ const Game = (function () {
         return true;
     }
 
+    function _removeGameResult() {
+        console.log("clicked");
+        const body = document.querySelector("body");
+        const game = document.querySelector(".game");
+
+        game.classList.remove("blur");
+
+        body.removeChild(body.lastChild);
+        restart();
+    }
+
     function restart() {
         const cells = document.querySelectorAll(".cell");
         cells.forEach((cell) => {
@@ -90,7 +101,6 @@ const Game = (function () {
                 (board[0][2] === board[1][1] && board[1][1] === board[2][0]))
         ) {
             win = board[0][2];
-            console.log(5);
         }
         if (win !== "") return `The Winner is ${win}`;
         else if (_fullBoard(board)) return "It's a Draw";
@@ -103,12 +113,30 @@ const Game = (function () {
             cell.addEventListener("click", () => {
                 _play(cell, index, turn);
 
-                if (winner(board) !== "") turn.textContent = winner(board);
+                if (winner(board) !== "") {
+                    turn.textContent = winner(board);
+                    showGameResult(winner(board));
+                }
             });
         });
     }
 
-    return { restart, winner, setBoard };
+    function showGameResult(win) {
+        if (win === "") return;
+        const body = document.querySelector("body");
+        const game = document.querySelector(".game");
+        const result = document.createElement("div");
+        
+        game.classList.add("blur");
+        result.classList.add("result");
+        result.textContent = win;
+
+        body.appendChild(result)
+        
+        result.addEventListener('click', _removeGameResult);
+    }
+
+    return { restart, winner, setBoard, showGameResult };
 })();
 
 function ticTacToe() {
